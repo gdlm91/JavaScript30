@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Console Tricks!</title>
+</head>
+
+<body>
+
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = '#BADA55';
+            p.style.fontSize = '50px';
+        }
+
+        const p = document.querySelector('p');
+
+        // Regular
+        console.log('Hello console');
+
+        // Interpolated
+        console.log('Hello %s!', 'console');
+
+        // Styled
+        console.log('%c Hello console', 'color: green; font-size: 25px');
+
+        // warning!
+        console.warn('Oh ho!');
+
+        // Error :|
+        console.error('Oh nooo!');
+
+        // Info
+        console.info('This is an info!');
+
+        // Testing
+        console.assert(1 === 1, 'That is wrong');
+        console.assert(1 === 2, 'That is wrong');
+
+        // clearing
+        // console.clear();
+
+        // Viewing DOM Elements
+        console.log(p);
+        console.dir(p);
+
+        // Grouping together
+        dogs.forEach(dog => {
+            console.groupCollapsed(`${dog.name}`);
+
+            console.log(`This is: ${dog.name}`);
+            console.log(`It is: ${dog.age} years old`);
+
+            console.groupEnd(`${dog.name}`);
+        })
+
+    // counting
+    console.count('Method 1');
+    console.count('Method 1');
+    console.count('Method 2');
+    console.count('Method 1');
+    console.count('Method 2');
+
+    // timing
+    console.time('fetch data');
+    fetch('https://api.github.com/users/gdlm91')
+        .then(data => data.json())
+        .then(data => {
+            console.log(data);
+            console.timeEnd('fetch github data took');
+        })
+
+    // table
+    console.table(dogs);
+
+    </script>
+</body>
+
+</html>
